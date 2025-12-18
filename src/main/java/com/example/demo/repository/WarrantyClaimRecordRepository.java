@@ -1,3 +1,2 @@
 package com.example.demo.repository;
-
-public 
+import org.springframework.data.jpa.repository.JpaRepository;
