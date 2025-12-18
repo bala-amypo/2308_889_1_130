@@ -5,5 +5,6 @@ public class StolenDeviceReport{
     private Long id;
     private String serialNumber;
     private LocalDateTime reportDate;
+    private String details;
     
 }
