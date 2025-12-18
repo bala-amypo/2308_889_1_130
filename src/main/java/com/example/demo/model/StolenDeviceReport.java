@@ -1,4 +1,5 @@
 package com.example.demo.model;
+import jakarta.persistence.Id;
 
 public class StolenDeviceReport{
     @Id
@@ -6,5 +7,5 @@ public class StolenDeviceReport{
     private String serialNumber;
     private LocalDateTime reportDate;
     private String details;
-    
+
 }
