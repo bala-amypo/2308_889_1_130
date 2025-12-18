@@ -1,5 +1,5 @@
 package com.example.demo.repository;
-import org.springframework.data.jpa.repository.Jpa
+import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface DeviceOwnerShipRecord extends JpaRepository<DeviceOwnershipRecord,Long>{
 
