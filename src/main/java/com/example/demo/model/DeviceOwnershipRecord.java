@@ -1,5 +1,6 @@
 package com.example.demo.model;
 import jakarta.persistence.Id;
+import java.time.LocalDate;
 
 public class DeviceOwnershipRecord {
     @Id
@@ -9,6 +10,6 @@ public class DeviceOwnershipRecord {
     private String ownerName;
     private String ownerEmail;
     private LocalDate purchaseDate;
-    private LocalDare warrantyExpiration;
+    private LocalDate warrantyExpiration;
     private Boolean active;
-}
+} 

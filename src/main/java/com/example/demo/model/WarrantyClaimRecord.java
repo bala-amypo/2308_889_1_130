@@ -1,6 +1,7 @@
 package com.example.demo.model;
 import jakarta.persistence.Id;
 
+
 public class WarrantyClaimRecord{
     @Id
     private Long id;
