@@ -1,13 +1,27 @@
 package com.example.demo.model;
-import jakarta.persistence.Id;
 
+import jakarta.persistence.*;
 
-public class WarrantyClaimRecord{
+@Entity
+public class WarrantyClaimRecord {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String serialNumber;
-    private String claimantName;
     private String claimReason;
-    private LocalDateTime submittedAt;
-    private 
+    private String status;
+
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public String getClaimReason() {
+        return claimReason;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
