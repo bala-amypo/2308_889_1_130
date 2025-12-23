@@ -11,7 +11,7 @@ public class StolenDeviceReport {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    privatAe String serialNumber;
+    private String serialNumber;
 
     @Column(nullable = false)
     private String reportedBy;
