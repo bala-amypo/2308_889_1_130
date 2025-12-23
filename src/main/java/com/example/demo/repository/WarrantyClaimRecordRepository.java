@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface WarrantyClaimRecordRepository
-        extends JpaRepository<WarrantyClaimRecord, Long> {
+        implements JpaRepository<WarrantyClaimRecord, Long> {
 
     Optional<WarrantyClaimRecord> findFirstBySerialNumber(String serial);
 
