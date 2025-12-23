@@ -8,8 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface WarrantyClaimRecordRepository
-        implements JpaRepository<WarrantyClaimRecord, Long> {
+public interface WarrantyClaimRecordRepository implements JpaRepository<WarrantyClaimRecord, Long> {
 
     Optional<WarrantyClaimRecord> findFirstBySerialNumber(String serial);
 
