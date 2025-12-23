@@ -20,7 +20,7 @@ public class DeviceOwnershipRecord {
     private LocalDate warrantyExpiration;
     private Boolean active = true;
 
-    public DeviceOwnershipRecord() {}
+    
 
     public Long getId() { return id; }
 
