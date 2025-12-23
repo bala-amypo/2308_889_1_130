@@ -1,19 +1,19 @@
-package com.example.demo.service;
+// package com.example.demo.service;
 
-import com.example.demo.model.FraudRule;
+// import com.example.demo.model.FraudRule;
 
-import java.util.List;
-import java.util.Optional;
+// import java.util.List;
+// import java.util.Optional;
 
-public interface FraudRuleService {
+// public interface FraudRuleService {
 
-    FraudRule createRule(FraudRule rule);
+//     FraudRule createRule(FraudRule rule);
 
-    FraudRule updateRule(Long id, FraudRule updatedRule);
+//     FraudRule updateRule(Long id, FraudRule updatedRule);
 
-    List<FraudRule> getActiveRules();
+//     List<FraudRule> getActiveRules();
 
-    Optional<FraudRule> getRuleByCode(String ruleCode);
+//     Optional<FraudRule> getRuleByCode(String ruleCode);
 
-    List<FraudRule> getAllRules();
-}
+//     List<FraudRule> getAllRules();
+// }

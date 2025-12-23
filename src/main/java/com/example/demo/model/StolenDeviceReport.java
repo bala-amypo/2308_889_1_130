@@ -1,57 +1,57 @@
-package com.example.demo.model;
+// package com.example.demo.model;
 
-import jakarta.persistence.*;
+// import jakarta.persistence.*;
 
-@Entity
-@Table(name = "stolen_device_reports")
-public class StolenDeviceReport {
+// @Entity
+// @Table(name = "stolen_device_reports")
+// public class StolenDeviceReport {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+//     @Id
+//     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String serialNumber;
+//     @Column(nullable = false, unique = true)
+//     private String serialNumber;
 
-    @Column(nullable = false)
-    private String reportedBy;
+//     @Column(nullable = false)
+//     private String reportedBy;
 
-    private String details;
+//     private String details;
 
-    public StolenDeviceReport() {
-    }
+//     public StolenDeviceReport() {
+//     }
 
-    public StolenDeviceReport(String serialNumber, String reportedBy, String details) {
-        this.serialNumber = serialNumber;
-        this.reportedBy = reportedBy;
-        this.details = details;
-    }
+//     public StolenDeviceReport(String serialNumber, String reportedBy, String details) {
+//         this.serialNumber = serialNumber;
+//         this.reportedBy = reportedBy;
+//         this.details = details;
+//     }
 
-    public Long getId() {
-        return id;
-    }
+//     public Long getId() {
+//         return id;
+//     }
 
-    public String getSerialNumber() {
-        return serialNumber;
-    }
+//     public String getSerialNumber() {
+//         return serialNumber;
+//     }
 
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
-    }
+//     public void setSerialNumber(String serialNumber) {
+//         this.serialNumber = serialNumber;
+//     }
 
-    public String getReportedBy() {
-        return reportedBy;
-    }
+//     public String getReportedBy() {
+//         return reportedBy;
+//     }
 
-    public void setReportedBy(String reportedBy) {
-        this.reportedBy = reportedBy;
-    }
+//     public void setReportedBy(String reportedBy) {
+//         this.reportedBy = reportedBy;
+//     }
 
-    public String getDetails() {
-        return details;
-    }
+//     public String getDetails() {
+//         return details;
+//     }
 
-    public void setDetails(String details) {
-        this.details = details;
-    }
-}
+//     public void setDetails(String details) {
+//         this.details = details;
+//     }
+// }
