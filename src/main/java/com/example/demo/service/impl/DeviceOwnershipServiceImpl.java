@@ -1,11 +1,47 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import com.example.demo.model.DeviceOwnershipRecord;
-import java.util.List;
+import com.example.demo.repository.DeviceOwnershipRecordRepository;
+import com.example.demo.service.DeviceOwnershipService;
 
-public interface DeviceOwnershipService {
-    DeviceOwnershipRecord register(DeviceOwnershipRecord device);
-    DeviceOwnershipRecord getBySerial(String serial);
-    List<DeviceOwnershipRecord> getAll();
-    DeviceOwnershipRecord updateStatus(Long id, boolean active);
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
+import org.springframework.stereotype.Service;
+
+@Service
+public class DeviceOwnershipServiceImpl implements DeviceOwnershipService {
+
+    private final DeviceOwnershipRecordRepository repository;
+
+    public DeviceOwnershipServiceImpl(DeviceOwnershipRecordRepository repository) {
+        this.repository = repository;
+    }
+
+    @Override
+    public DeviceOwnershipRecord registerDevice(DeviceOwnershipRecord device) {
+        if (repository.existsBySerialNumber(device.getSerialNumber())) {
+            throw new IllegalArgumentException("Serial number already exists");
+        }
+        return repository.save(device);
+    }
+
+    @Override
+    public Optional<DeviceOwnershipRecord> getBySerial(String serialNumber) {
+        return repository.findBySerialNumber(serialNumber);
+    }
+
+    @Override
+    public List<DeviceOwnershipRecord> getAllDevices() {
+        return repository.findAll();
+    }
+
+    @Override
+    public DeviceOwnershipRecord updateDeviceStatus(Long id, boolean active) {
+        DeviceOwnershipRecord device = repository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Device not found"));
+
+        device.setActive(active);
+        return repository.save(device);
+    }
 }
