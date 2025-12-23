@@ -38,3 +38,4 @@ public class DeviceOwnershipController {
         return ResponseEntity.ok(service.updateStatus(id, active));
     }
 }
+
