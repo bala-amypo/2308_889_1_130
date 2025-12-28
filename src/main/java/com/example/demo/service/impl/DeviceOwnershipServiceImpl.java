@@ -4,48 +4,37 @@ import com.example.demo.model.DeviceOwnershipRecord;
 import com.example.demo.repository.DeviceOwnershipRecordRepository;
 import com.example.demo.service.DeviceOwnershipService;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class DeviceOwnershipServiceImpl implements DeviceOwnershipService {
-
     private final DeviceOwnershipRecordRepository repository;
-
+    
     public DeviceOwnershipServiceImpl(DeviceOwnershipRecordRepository repository) {
         this.repository = repository;
     }
-
-    @Override
-    public DeviceOwnershipRecord register(DeviceOwnershipRecord device) {
+    
+    public DeviceOwnershipRecord registerDevice(DeviceOwnershipRecord device) {
+        if (repository.existsBySerialNumber(device.getSerialNumber())) {
+            throw new IllegalArgumentException("Device already exists");
+        }
         return repository.save(device);
     }
-
-    @Override
-    public List<DeviceOwnershipRecord> getAll() {
+    
+    public Optional<DeviceOwnershipRecord> getBySerial(String serialNumber) {
+        return repository.findBySerialNumber(serialNumber);
+    }
+    
+    public List<DeviceOwnershipRecord> getAllDevices() {
         return repository.findAll();
     }
-
-    @Override
-    public DeviceOwnershipRecord getBySerial(String serial) {
-        return repository.findBySerialNumber(serial)
-                .orElseThrow(() -> new RuntimeException("Device not found with serial: " + serial));
-    }
-
-    @Override
-    public DeviceOwnershipRecord updateStatus(Long id, boolean active) {
+    
+    public DeviceOwnershipRecord updateDeviceStatus(Long id, Boolean active) {
         DeviceOwnershipRecord device = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Device not found with id: " + id));
-
+            .orElseThrow(() -> new NoSuchElementException("Device not found"));
         device.setActive(active);
         return repository.save(device);
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        if (!repository.existsById(id)) {
-            throw new RuntimeException("Device not found with id: " + id);
-        }
-        repository.deleteById(id);
     }
 }

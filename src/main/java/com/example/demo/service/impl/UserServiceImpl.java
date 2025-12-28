@@ -1,64 +1,54 @@
-// package com.example.demo.service.impl;
+package com.example.demo.service.impl;
 
-// import com.example.demo.dto.RegisterRequest;
-// import com.example.demo.dto.LoginRequest;
-// import com.example.demo.model.User;
-// import com.example.demo.repository.UserRepository;
-// import com.example.demo.security.JwtTokenProvider;
-// import com.example.demo.service.UserService;
-// import org.springframework.security.crypto.password.PasswordEncoder;
-// import org.springframework.stereotype.Service;
-// import java.util.NoSuchElementException;
+import com.example.demo.model.User;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.service.UserService;
+import org.springframework.stereotype.Service;
 
-// @Service
-// public class UserServiceImpl implements UserService {
+import java.util.List;
+import java.util.Optional;
 
-//     private final UserRepository userRepository;
-//     private final PasswordEncoder passwordEncoder;
-//     private final JwtTokenProvider jwtTokenProvider;
-
-//     // Requirement: Strict Constructor Order
-//     public UserServiceImpl(UserRepository userRepository, 
-//                           PasswordEncoder passwordEncoder, 
-//                           JwtTokenProvider jwtTokenProvider) {
-//         this.userRepository = userRepository;
-//         this.passwordEncoder = passwordEncoder;
-//         this.jwtTokenProvider = jwtTokenProvider;
-//     }
-
-//     @Override
-//     public User registerUser(RegisterRequest request) {
-//         if (userRepository.existsByEmail(request.getEmail())) {
-//             throw new IllegalArgumentException("Email already in use");
-//         }
-//         User user = new User();
-//         user.setName(request.getName());
-//         user.setEmail(request.getEmail());
-//         user.setPassword(passwordEncoder.encode(request.getPassword()));
-//         user.setRoles(request.getRoles());
-//         return userRepository.save(user);
-//     }
-
-//     @Override
-//     public User loginUser(LoginRequest request) {
-//         User user = findByEmail(request.getEmail());
-//         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-//             throw new IllegalArgumentException("Invalid input");
-//         }
-//         return user;
-//     }
-
-//     // --- MUST INCLUDE THESE TO MATCH YOUR INTERFACE ---
-
-//     @Override
-//     public User getById(Long id) {
-//         return userRepository.findById(id)
-//                 .orElseThrow(() -> new NoSuchElementException("User not found"));
-//     }
-
-//     @Override
-//     public User findByEmail(String email) {
-//         return userRepository.findByEmail(email)
-//                 .orElseThrow(() -> new NoSuchElementException("User not found"));
-//     }
-// }
+@Service
+public class UserServiceImpl implements UserService {
+    
+    private final UserRepository userRepository;
+    
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+    
+    @Override
+    public User createUser(User user) {
+        return userRepository.save(user);
+    }
+    
+    @Override
+    public Optional<User> getUserById(Long id) {
+        return userRepository.findById(id);
+    }
+    
+    @Override
+    public Optional<User> getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+    
+    @Override
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+    
+    @Override
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+    
+    @Override
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+    
+    @Override
+    public boolean existsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
+}
