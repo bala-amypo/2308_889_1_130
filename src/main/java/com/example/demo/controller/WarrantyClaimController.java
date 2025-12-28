@@ -11,4 +11,3 @@ public class WarrantyClaimController {
         this.service = service;
     }
 }
-
