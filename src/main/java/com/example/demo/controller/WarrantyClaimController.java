@@ -1,40 +1,31 @@
-// package com.example.demo.controller;
+package com.example.demo.controller;
 
-// import com.example.demo.model.WarrantyClaimRecord;
-// import com.example.demo.service.WarrantyClaimService;
-// import org.springframework.http.ResponseEntity;
-// import org.springframework.web.bind.annotation.*;
+import com.example.demo.service.impl.WarrantyClaimServiceImpl;
+import org.springframework.web.bind.annotation.RestController;
 
-// import java.util.List;
+@RestController
+public class WarrantyClaimController {
+    private final WarrantyClaimServiceImpl service;
+    
+    public WarrantyClaimController(WarrantyClaimServiceImpl service) {
+        this.service = service;
+    }
+}
 
-// @RestController
-// @RequestMapping("/api/claims")
-// public class WarrantyClaimController {
+Dto:
+authrq:
 
-//     private final WarrantyClaimService service;
 
-//     public WarrantyClaimController(WarrantyClaimService service) {
-//         this.service = service;
-//     }
 
-//     @PostMapping
-//     public ResponseEntity<WarrantyClaimRecord> submit(@RequestBody WarrantyClaimRecord claim) {
-//         return ResponseEntity.ok(service.submit(claim));
-//     }
+package com.example.demo.dto;
 
-//     @GetMapping
-//     public ResponseEntity<List<WarrantyClaimRecord>> getAll() {
-//         return ResponseEntity.ok(service.getAll());
-//     }
-
-//     @GetMapping("/{id}")
-//     public ResponseEntity<WarrantyClaimRecord> getById(@PathVariable Long id) {
-//         return ResponseEntity.ok(service.getById(id));
-//     }
-
-//     @PutMapping("/{id}/status")
-//     public ResponseEntity<WarrantyClaimRecord> updateStatus(@PathVariable Long id,
-//                                                             @RequestParam String status) {
-//         return ResponseEntity.ok(service.updateStatus(id, status));
-//     }
-// }
+public class AuthRequest {
+    private String email;
+    private String password;
+    
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+    
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+}
