@@ -100,20 +100,7 @@
 
 	</dependencies>
 
-    <!-- <build>
-    <plugins>
-        <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <version>3.3.4</version>
-            <configuration>
-                <mainClass>com.example.demo.WarrantyClaimApplication</mainClass>
-            </configuration>
-        </plugin>
-    </plugins>
-</build> -->
-
-
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -132,5 +119,10 @@
 				</dependencies>
 			</plugin>
 		</plugins>
+	</build>
 
 </project>
+
+
+
+
